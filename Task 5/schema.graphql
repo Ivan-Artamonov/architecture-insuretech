@@ -1,0 +1,43 @@
+"""
+GraphQL API сервиса client-info
+"""
+scalar Date
+
+type Query {
+  """
+  Возвращает клиента по идентификатору
+  """
+  client(id: ID!): Client
+}
+
+"""
+Клиент страхового сервиса.
+"""
+type Client {
+  id: ID!
+  name: String
+  age: Int
+  documents: [Document!]!
+  relatives: [Relative!]!
+}
+
+"""
+Документ клиента.
+"""
+type Document {
+  id: ID!
+  type: String
+  number: String
+  issueDate: Date
+  expiryDate: Date
+}
+
+"""
+Родственник клиента.
+"""
+type Relative {
+  id: ID!
+  relationType: String
+  name: String
+  age: Int
+}
